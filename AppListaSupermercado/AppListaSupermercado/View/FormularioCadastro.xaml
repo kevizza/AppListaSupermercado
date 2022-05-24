@@ -4,6 +4,22 @@
              x:Class="AppListaSupermercado.View.FormularioCadastro">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Código:" />
+            <Label x:Name="lbl_id" Text="{ Binding Id }" />
+            
+            <Label Text="Nome do Produto:" />
+            <Entry x:Name="txt_name" Text="{ Binding Nome}"/>
+            
+            <Label Text="Quantidade" />
+            <Entry x:Name="txt_quant" Text="{Binding Quantidade}"/>
+            
+            <Label Text="Preço Estimado" />
+            <Entry x:Name="txt_precoEstim" Text="{Binding PrecoEstimado}"/>
+
+            <Label Text="Preço Pago" />
+            <Entry x:Name="txt_precoPago" Text="{Binding PrecoPago}"/>
+
+            <Button Text="Salvar" Clicked="Button_Clicked_1"/>
             <Button Text="Voltar" 
                     HorizontalOptions="CenterAndExpand"
                     TextColor="White"

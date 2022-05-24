@@ -6,13 +6,20 @@
     <ContentPage.Content>
         
         <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <SearchBar x:Name="txt_busca"
+                           Placeholder="O que vc deseja buscar?"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="txt_busca_TextChanged" />
+            </StackLayout>
             <Label Text="Lista Supermercado"
                    HorizontalOptions="Center"
                    FontAttributes="Bold"
                    FontSize="30"
                    TextColor="Black"/>
-            <RefreshView x:Name="atualizando" IsRefreshing="False">
-                <ListView x:Name="lista">
+
+            <RefreshView x:Name="atualizando" IsRefreshing="True">
+                <ListView x:Name="lista" ItemSelected="lista_ItemSelected">
                     <ListView.Header>
                         <Grid RowDefinitions="Auto"
                               ColumnDefinitions="*,*,*,*">
@@ -26,15 +33,15 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.ContextActions>
-                                    <MenuItem Text="Remover"/>
+                                    <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
                                 </ViewCell.ContextActions>
 
                                 <Grid RowDefinitions="Auto" 
                                       ColumnDefinitions="*,*,*">
                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" />
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Descricao}" />
-                                    <Label Grid.Row="0" Grid.Column="2" 
-                                       Text="{Binding Data_Criacao, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" />
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ValorEstimado}" />
+                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding ValorPago}" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
