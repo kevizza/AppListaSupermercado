@@ -8,22 +8,19 @@ using System.Threading.Tasks;
 
 namespace AppListaSupermercado.Helper
 {
-    public class SQLiteDatabaseHelper
-
+    public class SQLiteDataBaseHelper
     {
         readonly SQLiteAsyncConnection _connection;
 
-
-        public SQLiteDatabaseHelper(string path)
+        public SQLiteDataBaseHelper(string path)
         {
             _connection = new SQLiteAsyncConnection(path);
             _connection.CreateTableAsync<Produto>().Wait();
         }
 
-
-        public Task<int> Save(Produto p)
+        public Task<int> Save(Produto t)
         {
-            return _connection.InsertAsync(p);
+            return _connection.InsertAsync(t);
         }
 
         public Task<List<Produto>> GetAllRows()
@@ -36,14 +33,15 @@ namespace AppListaSupermercado.Helper
             return _connection.Table<Produto>().DeleteAsync(i => i.Id == id);
         }
 
-        public Task<List<Produto>> Update(Produto p)
+        // Update, fará a atualização no banco de dados. //
+        public Task<List<Produto>> Update(Produto t)
         {
             string sql = "UPDATE produto SET " +
-             "NomeProduto=?, Quantidade=?, PrecoEstimado=?, PrecoPago=? " +
-             "WHERE Id=?";
+                         "Nome=?, Valor_Estimado=?, Valor_Pago=? " +
+                         "WHERE Id=?";
 
             return _connection.QueryAsync<Produto>(sql,
-                p.NomeProduto, p.Quantidade, p.PrecoEstimado, p.PrecoPago, p.Id);
+                t.Nome, t.Valor_Estimado, t.Valor_Pago, t.Id);
         }
 
         public Task<List<Produto>> Search(string q)

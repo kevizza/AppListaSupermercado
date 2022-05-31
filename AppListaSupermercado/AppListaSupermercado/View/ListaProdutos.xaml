@@ -2,59 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppListaSupermercado.View.ListaProdutos">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"                     
+                     Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     
-    <ContentPage.Content>
-        
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <SearchBar x:Name="txt_busca"
-                           Placeholder="O que vc deseja buscar?"
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <SearchBar x:Name="txt_busca"
+                           Placeholder="Buscar Produtos"
+                           BackgroundColor="#D2B48C"
                            HorizontalOptions="FillAndExpand"
                            TextChanged="txt_busca_TextChanged" />
-            </StackLayout>
-            <Label Text="Lista Supermercado"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold"
-                   FontSize="30"
-                   TextColor="Black"/>
-
-            <RefreshView x:Name="atualizando" IsRefreshing="True">
-                <ListView x:Name="lista" ItemSelected="lista_ItemSelected">
-                    <ListView.Header>
-                        <Grid RowDefinitions="Auto"
-                              ColumnDefinitions="*,*,*,*">
-                            <Label Grid.Row="0" Grid.Column="0" Text="Id" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="Nome" />
-                            <Label Grid.Row="0" Grid.Column="2" Text="Valor Estimado" />
-                            <Label Grid.Row="0" Grid.Column="3" Text="Valor Pago" />
-                        </Grid>
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
-                                </ViewCell.ContextActions>
-
-                                <Grid RowDefinitions="Auto" 
-                                      ColumnDefinitions="*,*,*">
-                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" />
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" />
-                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ValorEstimado}" />
-                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding ValorPago}" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </RefreshView>
-            <Button Text="Adicionar Produto" 
-                    HorizontalOptions="CenterAndExpand"
-                    TextColor="White"
-                    BackgroundColor="DarkRed"
-                    Margin="70"
-                    Clicked="Button_Clicked"/>
         </StackLayout>
-        
-    </ContentPage.Content>
+
+        <RefreshView x:Name="atualizando" IsRefreshing="True" >
+            <ListView x:Name="lista" ItemSelected="lista_ItemSelected" >
+                <ListView.Header>
+                    <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*,*,*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Id" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Nome" FontAttributes="Bold"  />
+                        <Label Grid.Row="0" Grid.Column="2" Text="Valor" FontAttributes="Bold"  />
+                        <Label Grid.Row="0" Grid.Column="3" Text="Valor Pago" FontAttributes="Bold" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                            </ViewCell.ContextActions>
+
+                            <Grid RowDefinitions="Auto" 
+                                      ColumnDefinitions="*,*,*">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" FontAttributes="Bold"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" FontAttributes="Bold"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Valor_Estimado}" FontAttributes="Bold"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Valor_Pago}" FontAttributes="Bold"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RefreshView>
+    </StackLayout>
 </ContentPage>

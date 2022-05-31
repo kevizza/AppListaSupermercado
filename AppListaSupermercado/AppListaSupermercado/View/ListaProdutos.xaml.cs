@@ -17,13 +17,12 @@ namespace AppListaSupermercado.View
         public ListaProdutos()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 
         protected override void OnAppearing()
         {
-            ObservableCollection<Produto> produtos = new ObservableCollection<Produto>();
+            ObservableCollection<Produto> tarefas = new ObservableCollection<Produto>();
 
             System.Threading.Tasks.Task.Run(async () =>
             {
@@ -31,13 +30,13 @@ namespace AppListaSupermercado.View
 
                 foreach (Produto item in temp)
                 {
-                    produtos.Add(item);
+                    tarefas.Add(item);
                 }
 
                 atualizando.IsRefreshing = false;
             });
 
-            lista.ItemsSource = produtos;
+            lista.ItemsSource = tarefas;
         }
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
@@ -48,7 +47,7 @@ namespace AppListaSupermercado.View
 
             Produto produto_selecionado = (Produto)disparador.BindingContext;
 
-            bool confirmacao = await DisplayAlert("Confirmar", "Excluir Produto da Lista", "Sim", "Não");
+            bool confirmacao = await DisplayAlert("Confirmação", "Deletar o Produto?", "Sim", "Não");
 
             if (confirmacao)
             {
@@ -70,16 +69,11 @@ namespace AppListaSupermercado.View
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new View.FormularioCadastro());
-        }
-
         private void lista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Produto produto_selecionado = (Produto)e.SelectedItem;
 
-            Navigation.PushAsync(new FormularioCadastro
+            Navigation.PushAsync(new ProdutoAberto
             {
                 BindingContext = produto_selecionado
             });
@@ -87,7 +81,7 @@ namespace AppListaSupermercado.View
 
         private void txt_busca_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ObservableCollection<Produto> tarefas = new ObservableCollection<Produto>();
+            ObservableCollection<Produto> produtos = new ObservableCollection<Produto>();
 
             string q = e.NewTextValue;
 
@@ -97,13 +91,18 @@ namespace AppListaSupermercado.View
 
                 foreach (Produto item in temp)
                 {
-                    tarefas.Add(item);
+                    produtos.Add(item);
                 }
 
                 atualizando.IsRefreshing = false;
             });
 
-            lista.ItemsSource = tarefas;
+            lista.ItemsSource = produtos;
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FormularioCadastro());
         }
     }
 }

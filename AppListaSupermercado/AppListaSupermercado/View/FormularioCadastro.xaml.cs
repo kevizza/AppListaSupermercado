@@ -16,30 +16,28 @@ namespace AppListaSupermercado.View
         public FormularioCadastro()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync();
-        }
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ListaProdutos());
+    }
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            Produto t = new Produto
             {
-                Id = Convert.ToInt16(lbl_id.Text),
-                NomeProduto = txt_name.Text,
-                Quantidade = txt_quant.Text,
-                PrecoEstimado = txt_precoEstim.Date,
-                PrecoPago = txt_precoPago.Date,
-            };
+                Produto t = new Produto();
+                t.Nome = txt_descricao.Text;
+                t.Valor_Estimado = txt_valorestimado.Text;
+                t.Valor_Pago = txt_valorpago.Text;
 
-            await App.Database.Update(t);
 
-            await DisplayAlert("Sucesso", "Atualizado no SQLite", "OK");
+                await App.Database.Save(t);
 
-            await Navigation.PushAsync(new ListaProdutos());
+                await DisplayAlert("Concluido", "O Produto foi salvo", "OK");
+
+                await Navigation.PushAsync(new ListaProdutos());
+            }
         }
     }
 }

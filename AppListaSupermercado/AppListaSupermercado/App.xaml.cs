@@ -10,9 +10,9 @@ namespace AppListaSupermercado
     {
 
 
-        static SQLiteDatabaseHelper database;
+        static SQLiteDataBaseHelper database;
 
-        public static SQLiteDatabaseHelper Database
+        public static SQLiteDataBaseHelper Database
         {
             get
             {
@@ -22,7 +22,7 @@ namespace AppListaSupermercado
                         Environment.GetFolderPath(
                             Environment.SpecialFolder.LocalApplicationData), "arquivo.db3");
 
-                    database = new SQLiteDatabaseHelper(path);
+                    database = new SQLiteDataBaseHelper(path);
                 }
 
                 return database;
@@ -33,7 +33,7 @@ namespace AppListaSupermercado
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new View.ListaProdutos());
+            MainPage = new NavigationPage(new View.PaginaInicial());
         }
 
         protected override void OnStart()

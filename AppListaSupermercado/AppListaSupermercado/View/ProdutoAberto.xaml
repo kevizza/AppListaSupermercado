@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppListaSupermercado.View.ProdutoAberto">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="#424242">
+
+            <Label Text="Mudando Produto"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="white"
+                   Margin="20,40"/>
+
+            <Label Text="Código:" 
+                   FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+            <Label x:Name="lbl_id" 
+                   Text="{ Binding Id }" 
+                   />
+
+            <Label Text="Nome" 
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="txt_nome" Text="{ Binding Nome }" />
+
+            <Label Text="Valor Estimado" 
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="txt_valorestimado" 
+                   Text="{Binding Valor_Estimado}" 
+                   TextColor="White"/>
+
+            <Label Text="Valor Pago" 
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="txt_valorpago" Text="{Binding Valor_Pago}" />
+
+            <Button Text="Salvar" Clicked="Button_Clicked" BackgroundColor="#A0522D"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

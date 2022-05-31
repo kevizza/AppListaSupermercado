@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppListaSupermercado.View.PaginaInicial"
+             BackgroundColor="#424242">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="10, 50" Padding="10,20">
+            <Label Text="Lista Supermercado"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="white"
+                   Margin="20,40"/>
+            <Button Text="Entrar No APP" 
+                    Scale="1"
+                    FontAttributes="Bold"
+                    BackgroundColor="#D2B48C"
+                    Clicked="Button_Clicked_1"/>
+            <Button Text="sair" 
+                    Scale="1"
+                    FontAttributes="Bold"
+                    BackgroundColor="White"
+                    Clicked="Button_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -2,30 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppListaSupermercado.View.FormularioCadastro">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Código:" />
-            <Label x:Name="lbl_id" Text="{ Binding Id }" />
-            
-            <Label Text="Nome do Produto:" />
-            <Entry x:Name="txt_name" Text="{ Binding Nome}"/>
-            
-            <Label Text="Quantidade" />
-            <Entry x:Name="txt_quant" Text="{Binding Quantidade}"/>
-            
-            <Label Text="Preço Estimado" />
-            <Entry x:Name="txt_precoEstim" Text="{Binding PrecoEstimado}"/>
 
-            <Label Text="Preço Pago" />
-            <Entry x:Name="txt_precoPago" Text="{Binding PrecoPago}"/>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Listagem"                    
+                     Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
 
-            <Button Text="Salvar" Clicked="Button_Clicked_1"/>
-            <Button Text="Voltar" 
-                    HorizontalOptions="CenterAndExpand"
-                    TextColor="White"
-                    BackgroundColor="DarkRed"
-                    Margin="70"
-                    Clicked="Button_Clicked"/>
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout BackgroundColor="#424242">
+        
+        <Label Text="Adicionando Produto"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="white"
+                   Margin="20,40"/>
+        <Label Text="Nome do Produto" 
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+        
+        <Entry x:Name="txt_descricao"
+               ClearButtonVisibility="WhileEditing" 
+               Margin="20,5"/>
+        
+        <Label Text=" " />
+
+        <Label Text="Valor Estimado" 
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+        
+        <Entry x:Name="txt_valorestimado"
+               ClearButtonVisibility="WhileEditing" 
+               Margin="20,5"/>
+
+        <Label Text=" " />
+
+        <Label Text="Valor Pago" 
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+        
+        <Entry x:Name="txt_valorpago"
+               ClearButtonVisibility="WhileEditing"
+               Margin="20,5"/>
+
+
+
+        <Button Text="Adicionar Produto" 
+                Clicked="Button_Clicked_1"
+                TextColor="Black"
+                CornerRadius="13"
+                Margin="40,50"
+                FontAttributes="Bold"
+                BackgroundColor="White"/>
+
+
+    </StackLayout>
+    
 </ContentPage>
