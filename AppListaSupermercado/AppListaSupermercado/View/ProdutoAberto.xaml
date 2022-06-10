@@ -25,7 +25,8 @@
                    FontAttributes="Bold"
                    TextColor="White"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="txt_nome" Text="{ Binding Nome }" />
+            <Entry x:Name="txt_nome" Text="{ Binding Nome }" 
+                   TextColor="White"/>
 
             <Label Text="Valor Estimado" 
                    FontAttributes="Bold"
@@ -39,7 +40,8 @@
                    FontAttributes="Bold"
                    TextColor="White"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="txt_valorpago" Text="{Binding Valor_Pago}" />
+            <Entry x:Name="txt_valorpago" Text="{Binding Valor_Pago}" 
+                   TextColor="White"/>
 
             <Button Text="Salvar" Clicked="Button_Clicked" BackgroundColor="#A0522D"/>
         </StackLayout>
